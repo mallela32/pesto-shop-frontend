@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect,useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -17,6 +17,17 @@ const LoginScreen = ({ location, history }) => {
   const { loading, error, userInfo } = userLogin
 
   const redirect = location.search ? location.search.split('=')[1] : '/'
+  const loginAsAdmin =useCallback((e)=>{
+        setEmail('admin@gmail.com');
+        setPassword('123456')
+      dispatch(login(email, password))
+    },[dispatch, email, password])
+    
+    const loginAsDemo =useCallback((e)=>{
+      setEmail('user@gmail.com');
+        setPassword('123456');
+      dispatch(login(email, password))
+  },[dispatch, email, password])
 
   useEffect(() => {
     if (userInfo) {
@@ -24,19 +35,33 @@ const LoginScreen = ({ location, history }) => {
     }
   }, [history, userInfo, redirect])
 
+  useEffect(()=>{
+    if(email === 'admin@gmail.com'){
+      loginAsAdmin();
+    }
+    if(email === 'user@gmail.com'){
+      loginAsDemo();
+    }
+  },[email, loginAsAdmin, loginAsDemo, password])
+  
+
   const submitHandler = (e) => {
     e.preventDefault()
     dispatch(login(email, password))
   }
+ 
   const h1 = {
     color:'#23b7b7 !important '
   }
   const button = {
     backgroundColor:'#23b7b7',
-    border:'0px'
+    border:'0px',
+    marginLeft:'10px'
   }
 
   return (
+    <>
+    {loading && <Loader />}
     <FormContainer>
       <h1 className='text-center' style={h1}>Sign In</h1>
       {error && <Message variant='danger'>{error}</Message>}
@@ -49,6 +74,7 @@ const LoginScreen = ({ location, history }) => {
             placeholder='Enter email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            autoComplete='off'
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='password'>
@@ -61,17 +87,13 @@ const LoginScreen = ({ location, history }) => {
           ></Form.Control>
         </Form.Group>
         <Row>
-          <Col className='d-flex justify-content-around'>
+          <Col xs={12} className='d-flex justify-content-around'>
           <Button type='submit'  className='my-2  ' style={button}>
-          {loading && <Loader />} Sign In
+           Sign In
         </Button>
-        <Button type='submit'  className='my-2 ' style={button}>
-          Sign In as Admin
-        </Button>
-        <Button type='submit'  className='my-2 ' style={button}>
-          Sign In as User
-        </Button>
+       
           </Col>
+          
         </Row>
         
       </Form>
@@ -85,6 +107,14 @@ const LoginScreen = ({ location, history }) => {
         </Col>
       </Row>
     </FormContainer>
+    <Col className='d-flex justify-content-center'>
+    <Button className='my-2  ' style={button} onClick={loginAsAdmin}>
+    Sign In as Demo Admin
+  </Button>
+  <Button className='my-2 ' style={button} onClick={loginAsDemo} >
+    Sign In as Demo User
+  </Button></Col>
+  </>
   )
 }
 
