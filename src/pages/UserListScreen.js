@@ -34,7 +34,7 @@ const UserListScreen = ({ history }) => {
 
   return (
     <div className='container'>
-      <h1>Users</h1>
+      <h1 className='text-center' style={{color:'teal !important'}}>Users</h1>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -56,7 +56,7 @@ const UserListScreen = ({ history }) => {
                 <td>{user._id}</td>
                 <td>{user.name}</td>
                 <td>
-                  <a href={`mailto:${user.email}`}>{user.email}</a>
+                  <a href={`mailto:${user.email}`} className="email-anchortag">{user.email}</a>
                 </td>
                 <td>
                   {user.isAdmin ? (

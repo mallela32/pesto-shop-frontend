@@ -1,9 +1,13 @@
 import React from 'react'
- import { Spinner } from 'react-bootstrap'
+ import { Spinner,Col } from 'react-bootstrap'
+ 
 
 const Loader = () => {
   return (
-      <Spinner animation="border" variant="light"  />
+    <Col className='d-flex justify-content-center'>
+    <Spinner animation="border" variant="dark"  />
+    </Col>
+      
   )
 }
 

@@ -8,7 +8,6 @@ import Paginate from '../components/Paginate'
 import {
   listProducts,
   deleteProduct,
-  createProduct,
 } from '../actions/productActions'
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
 
@@ -66,9 +65,7 @@ const ProductListScreen = ({ history, match }) => {
     }
   }
 
-  const createProductHandler = () => {
-    dispatch(createProduct())
-  }
+  
 
   return (
     <Container>
@@ -81,10 +78,7 @@ const ProductListScreen = ({ history, match }) => {
             <i className='fas fa-plus'></i> Create Product
           </Button> */}
           <LinkContainer to={`/admin/product/add`} >
-                      <Button variant='' className='btn btn-primary' style={{
-    color: 'teal !important',
-    backgroundColor: 'burlywood !important'
-}}>
+                      <Button variant='' className='btn btn-primary add-product-btn'>
                       <i className='fas fa-plus'></i> Create Product
                       </Button>
          </LinkContainer>

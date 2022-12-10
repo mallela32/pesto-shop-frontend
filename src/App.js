@@ -26,10 +26,11 @@ import ProductAddScreen from './pages/productAddScreen'
 
 const App = () => {
   return (
+    <>
     <Router>
       {/* <Header /> */}
       <NavBar />
-      <main className='py-3 mt-5'>
+      <main className='py-3 mt-5 poition-relative'>
         <Route render={({ history }) => <SearchBar history={history} />} />
         <Route path='/order/:id' component={OrderScreen} />
         <Route path='/shipping' component={ShippingScreen} />
@@ -60,8 +61,11 @@ const App = () => {
         />
         <Route path='/' component={HomeScreen} exact />
       </main>
-      <Footer />
+      
     </Router>
+    <Footer />
+    </>
+    
   )
 }
 

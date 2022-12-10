@@ -49,7 +49,7 @@ const ProductAddScreen = ({ match, history }) => {
         headers: {
           "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
           "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+           "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
           'Content-Type': 'multipart/form-data',
         },
       }

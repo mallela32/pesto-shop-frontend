@@ -6,7 +6,7 @@ const Footer = () => {
   const year = new Date().getFullYear()
 
   return (
-    <footer>
+    <footer className='mx-auto' style={{backgroundColor:'lightskyblue'}}>
       <Container>
         <Row>
           <Col className='text-center py-3'>
