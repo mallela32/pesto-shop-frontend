@@ -7,14 +7,17 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 import { createProduct } from '../actions/productActions'
+import { PRODUCT_CREATE_SUCCESS } from '../constants/productConstants'
 
 
 const ProductAddScreen = ({ match, history }) => {
+
+
   const productId = match.params.id
 
   const [name, setName] = useState('')
   const [price, setPrice] = useState(0)
-  const [image, setImage] = useState('')
+  const [image, setImage] = useState('/images/sample.jpg')
   const [brand, setBrand] = useState('')
   const [category, setCategory] = useState('')
   const [countInStock, setCountInStock] = useState(0)
@@ -35,8 +38,11 @@ const ProductAddScreen = ({ match, history }) => {
   } = productUpdate
 
   useEffect(() => {
-    
-  }, [dispatch, history, productId, product, successUpdate])
+    if (loading) {
+      dispatch({ type: PRODUCT_CREATE_SUCCESS })
+      history.push('/admin/productlist')
+    } 
+  }, [dispatch, history, productId, product, successUpdate, loading])
 
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0]
@@ -168,7 +174,7 @@ const ProductAddScreen = ({ match, history }) => {
               ></Form.Control>
             </Form.Group>
             <Col className='d-flex justify-content-center'>
-            <Button type='submit' className='mt-2'  style={{backgroundColor:'teal !important'}}>
+            <Button type='submit' className='mt-2 add-product-btn'  style={{backgroundColor:'teal !important'}}>
               Add Your Product
             </Button>
             </Col>

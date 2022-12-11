@@ -135,6 +135,7 @@ tbody tr:nth-child(odd){
 }
 .add-product-btn{
   color: white !important;
-  background-color: teal !important
+  background-color: teal !important;
+  border: 0px;
 }
 

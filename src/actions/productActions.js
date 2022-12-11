@@ -122,13 +122,14 @@ export const createProduct = (product) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.post(`https://pesto-shop-backend.onrender.com/api/products`, product, config);
-    console.log(data);
+    const { data } = await axios.post(`https://pesto-shop-backend.onrender.com/api/products`, product, config)
+    
 
     dispatch({
       type: PRODUCT_CREATE_SUCCESS,
       payload: data,
     })
+    dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data})
   } catch (error) {
     console.log(error);
     const message =
