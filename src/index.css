@@ -82,6 +82,10 @@ h2 {
 
 a,ul,li{
   color: white !important;
+  text-decoration: none;
+}
+a:hover{
+  background-color: #23b7b7 !important;
 }
  .dropdown-item :hover{
     color: black !important;
@@ -130,15 +134,7 @@ tbody tr:nth-child(odd){
   color: #fff;
 }
 .add-product-btn{
-  color: 'black !important';
-  background-color: 'teal !important'
+  color: white !important;
+  background-color: teal !important
 }
-.btn-primary{
-  color: 'black !important';
-  background-color: 'teal !important'
-}
-/* footer{
-  position: absolute;
-    width: 100%;
-    bottom: 0px;
-} */
+

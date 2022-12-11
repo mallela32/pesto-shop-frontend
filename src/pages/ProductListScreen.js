@@ -78,7 +78,7 @@ const ProductListScreen = ({ history, match }) => {
             <i className='fas fa-plus'></i> Create Product
           </Button> */}
           <LinkContainer to={`/admin/product/add`} >
-                      <Button variant='' className='btn btn-primary add-product-btn'>
+                      <Button variant='' className='btn add-product-btn'>
                       <i className='fas fa-plus'></i> Create Product
                       </Button>
          </LinkContainer>

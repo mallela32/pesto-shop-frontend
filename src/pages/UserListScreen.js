@@ -44,10 +44,10 @@ const UserListScreen = ({ history }) => {
           <thead>
             <tr>
               <th>ID</th>
-              <th>NAME</th>
-              <th>EMAIL</th>
-              <th>ADMIN</th>
-              <th></th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Admin</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -66,7 +66,10 @@ const UserListScreen = ({ history }) => {
                   )}
                 </td>
                 <td>
-                  <LinkContainer to={`/admin/user/${user._id}/edit`}>
+                  <LinkContainer to={`/admin/user/${user._id}/edit`} style={{
+    color: 'teal !important',
+    backgroundColor: 'burlywood'
+}}>
                     <Button variant='light' className='btn-sm'>
                       <i className='fas fa-edit'></i>
                     </Button>

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button,Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
@@ -167,10 +167,12 @@ const ProductAddScreen = ({ match, history }) => {
                 onChange={(e) => setDescription(e.target.value)}
               ></Form.Control>
             </Form.Group>
-
-            <Button type='submit' variant='primary'>
+            <Col className='d-flex justify-content-center'>
+            <Button type='submit' className='mt-2'  style={{backgroundColor:'teal !important'}}>
               Add Your Product
             </Button>
+            </Col>
+            
           </Form>
         )}
       </FormContainer>
